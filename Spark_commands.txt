@@ -1,0 +1,15 @@
+
+###################################################################################################################################
+For Spark to run properly on Maria_dev CLI, need to log into Ambari as Admin and make the following changes to Spark and Spark 2.0:
+- Go to Spark > config
+- Open py4j 
+- Change INFO to ERROR in log
+- Do the same for Spark 2.0
+###################################################################################################################################
+
+# Run spark script:
+>> spark-submit sparkscript.py
+
+
+# Run spark script with for Spark 2.0:
+>> export SPARK_MAJOR_VERSION=2 

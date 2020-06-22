@@ -1,0 +1,32 @@
+**************************************************************************************************************
+The following shows how to use Sqoop to import/export external database into HDFS   
+**************************************************************************************************************
+
+# First you need to log in as SQL admin
+>> mysql -u -root -p
+
+# Grant permission
+>> GRANT ALL PRIVILEGES ON movielens.* to ''@'localhost';
+
+
+# Use sqoop to connect to local mysql database and import a specific table to HDFS cluster
+# NOTE: -m 1 just means the cluster is on 1 local computer. For actual clusters, don't include this peice of command
+
+sqoop import --connect jdbc:mysql://localhost/<db name> --driver com.mysql.jdbc.Driver --table <table name> -m 1
+
+
+
+# Use sqoop to connect to local mysql database and import a specific table directly to HIVE 
+# Hive is a schema-on-read database. Meaning the import data will reside as a text file somewhere
+# Hive reads it as structured data
+
+sqoop import --connect jdbc:mysql://localhost/<db name> --driver com.mysql.jdbc.Driver --table <table name> -m 1 --hive-import
+
+
+# Use sqoop to export a db file from local file system to an existing mysql db
+# The data in the file will be added as a table. 
+# On mysql's end, the table needs to be created in the db before hand
+# export dir states the path where the db file is:
+# input fields terminated by states how the data will be delimited
+
+>> sqoop export --connect jdbc:mysql://localhost/<db name> --m1 --driver com.mysql.jdbc.Driver --table exported_movies --export-dir /apps/hive/warehouse/movies -input-fields-terminated-by '\0001'

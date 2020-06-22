@@ -1,0 +1,38 @@
+**************************************************************************************************************
+The following shows how to import a sql database file into Ambari's MySQL using sandbox CLI 
+**************************************************************************************************************
+
+# First you need to log in as SQL admin
+>> mysql -u -root -p
+>> password: hadoop
+
+
+# Create database in MySQL from sandbox CLI:
+>> create database <db name>;
+
+# Show the created database:
+>> show databases;
+
+# This is to account for any weird emojis/chars in the incoming db file
+>> SET NAMES 'utf8'
+>> SET CHARACTER SET 'utf8'
+
+
+# To select the Ambari MySQL database being used:
+>> use <db name>;
+
+# Load db file into Ambari SQL database:
+>> use <db file name>;
+
+# Show all tables in database:
+>> show tables;
+
+# You can write sql queries while you're in mysql mode
+
+
+
+
+
+
+
+

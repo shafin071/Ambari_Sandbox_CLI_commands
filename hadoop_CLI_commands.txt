@@ -1,0 +1,37 @@
+
+# Check the content of current hadoop directory
+>> hadoop fs -ls
+
+
+# Create a new folder named ml-100k 
+>> hadoop fs -mkdir ml-100k
+
+
+# Get data files from a public server into local
+>> wget http://media.sundog-soft.com/hadoop/ml-100k/u.data
+
+
+# Copy data file from local to ml-100k folder
+>> hadoop fs -copyFromLocal u.data ml-100k/u.data
+
+
+# Check if the data file is in the folder
+>> hadoop fs -ls
+
+
+# Delete data file from folder
+>> hadoop fs -rm ml-100k/u.data
+
+
+# Delete folder from hadoop
+>> hadoop fs -rmdir ml-100k
+
+
+# To see all available commands in hadoop
+>> hadoop fs
+
+
+
+
+
+

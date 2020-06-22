@@ -1,0 +1,28 @@
+
+*******************************************************
+You need to be in admin mode to do this
+*******************************************************
+
+# Go to admin mode
+>> su root
+
+# Install python pip
+>> yum install python-pip
+
+# Install MRjob (for Hortonworks Sandbox 2.5)
+>> pip install google-api-python-client==1.6.4
+>> pip install mrjob==0.5.11
+
+
+# Install nano text editor
+>> yum install nano
+
+
+# Open python script with nano
+>> nano scriptName.py
+
+
+# Run a python script on hadoop. u-data is the data file
+>> python RatingsBreakdown.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar u.data
+
+
